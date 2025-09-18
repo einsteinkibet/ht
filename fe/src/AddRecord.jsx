@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// const API_URL = "https://ht-izqe.onrender.com";
-// Change this:
+const API_URL = "https://ht-izqe.onrender.com";
 
 // To this:
-const API_URL = "http://localhost:5000";
+// const API_URL = "http://localhost:5000";
 const AddRecord = () => {
   const [formData, setFormData] = useState({
     patientId: '',
