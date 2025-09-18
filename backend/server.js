@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import healthRoutes from './routes/health.js';
+const express = require('express');
+const cors = require('cors');
+const healthRoutes = require('./routes/health');
 
 const app = express();
-app.use(cors()); // Add this line
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/health', healthRoutes);

@@ -1,34 +1,30 @@
-const express = require('express');
-const router = express.Router();
-const healthRecordsContract = require('../config/blockchain');
-
-// Add a health record
-router.post('/addRecord', async (req, res) => {
-  const { patientId, recordHash, fromAddress } = req.body;
-
-  try {
-    const receipt = await healthRecordsContract.methods
-      .addRecord(patientId, recordHash)
-      .send({ from: fromAddress, gas: 300000 });
-
-    res.status(200).json({ success: true, receipt });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
+// Simple mock for when blockchain is not available
+const mockContract = {
+  methods: {
+    addRecord: (patientId, recordHash) => ({
+      send: async ({ from, gas }) => ({ 
+        transactionHash: '0xmock' + Math.random().toString(16).substr(2), 
+        status: true,
+        blockNumber: Math.floor(Math.random() * 10000),
+        from: from
+      })
+    }),
+    getRecords: (address) => ({
+      call: async () => [
+        { 
+          patientId: 'patient1', 
+          recordHash: 'hash1234567890', 
+          timestamp: Date.now() - 86400000 
+        },
+        { 
+          patientId: 'patient2', 
+          recordHash: 'hash0987654321', 
+          timestamp: Date.now() - 172800000 
+        }
+      ]
+    })
   }
-});
+};
 
-// Get health records by patient address
-router.get('/getRecords/:address', async (req, res) => {
-  const { address } = req.params;
-
-  try {
-    const records = await healthRecordsContract.methods.getRecords(address).call();
-    res.status(200).json({ success: true, records });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-module.exports = router;
+// ✅ Make sure this is export default (not module.exports)
+export default mockContract;
