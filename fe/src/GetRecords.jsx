@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_URL = "https://mh-0d6p.onrender.com";
+const API_URL = "https://ht-izqe.onrender.com";
 
 const GetRecords = () => {
   const [address, setAddress] = useState('');
