@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_URL = "https://ht-izqe.onrender.com";
+// Change this:
 
+// To this:
+const API_URL = "http://localhost:5000";
 const GetRecords = () => {
   const [address, setAddress] = useState('');
   const [records, setRecords] = useState([]);

@@ -1,0 +1,105 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "fromAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "patientId",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "recordHash",
+				"type": "string"
+			}
+		],
+		"name": "RecordAdded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "patientId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "recordHash",
+				"type": "string"
+			}
+		],
+		"name": "addRecord",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "patientAddress",
+				"type": "address"
+			}
+		],
+		"name": "getRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "patientId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "recordHash",
+						"type": "string"
+					}
+				],
+				"internalType": "struct HealthRecords.HealthRecord[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "records",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "patientId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "recordHash",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
